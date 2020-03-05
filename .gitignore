@@ -8,15 +8,12 @@ target/
 *.iml
 *.iws
 *.tcs
-*.java
+
 *.class
 *.info
 *.properties
 
-/1.JavaSyntax/
-/2.JavaCore/
-/3.JavaMultithreading/
-/4.JavaCollections/
+
 /out/
 /CodeGymPlugin.properties
 /Instruction.png
