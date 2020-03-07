@@ -12,8 +12,8 @@ public class Solution {
             int[] m = new int[2];
             m[8] = 5;
         }
-        catch(IndexOutOfBoundsException e){
-            System.out.println("IndexOutOfBoundsException has been caught");
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("ArrayIndexOutOfBoundsException has been caught");
         }
 
         //write your code here
