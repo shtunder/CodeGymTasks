@@ -10,7 +10,7 @@ public class Solution {
         //write your code here
         try {
             String s = null;
-            String m = s.toLowerCase();
+            String m = s.toLowerCase(); 
         }
         catch(NullPointerException e){
             System.out.println("NullPointerException has been caught");
