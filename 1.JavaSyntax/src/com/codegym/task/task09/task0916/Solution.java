@@ -2,6 +2,7 @@ package com.codegym.task.task09.task0916;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.sql.SQLOutput;
 
 /* 
 Catching checked exceptions
@@ -20,11 +21,11 @@ public class Solution {
             obj.method2();
             obj.method3();
         } catch (RemoteException e){
-
+            System.out.println("RemoteException");
         } catch (NoSuchFieldException e){
-
+            System.out.println("NoSuchFieldException");
         } catch (IOException e){
-
+            System.out.println("IOException");
         }
 
     }
