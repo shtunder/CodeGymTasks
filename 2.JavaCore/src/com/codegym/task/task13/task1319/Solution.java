@@ -1,6 +1,11 @@
 package com.codegym.task.task13.task1319;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
 
 /* 
 Writing to a file from the console
@@ -9,15 +14,18 @@ Writing to a file from the console
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        // напишите тут ваш код
+        // write your code here
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String filename = reader.readLine();
 
         BufferedWriter file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));
 
         String s = "";
-        while (!s.equals("exit")) {
+        while (true) {
             s = reader.readLine();
+            if (s.equals("exit")){
+                break;
+            }
             file.write(s);
             file.newLine();
         }
@@ -26,46 +34,3 @@ public class Solution {
         reader.close();
     }
 }
-
-
-//public class Solution {
-//    public static void main(String[] args) {
-//        // write your code here
-//        BufferedReader reader = null;
-//        InputStream inputStream = null;
-//        BufferedInputStream buffer = null;
-//        OutputStream outputStream = null;
-//
-//        try {
-//            reader = new BufferedReader(new InputStreamReader(System.in));
-//            String s = reader.readLine();
-//
-//
-//
-//            while (true){
-//                String str = reader.readLine();
-//                byte[] arr = str.getBytes();
-//
-//                if (str.equals("exit")) {
-//                    break;
-//                }
-//            }
-//
-//            inputStream = new ByteArrayInputStream();
-//            buffer = new BufferedInputStream(inputStream);
-//
-//            outputStream = new FileOutputStream(s);
-//            while (buffer.available()>0) {
-//                int data = buffer.read();
-//                outputStream.write(data);
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//
-//
-//        }
-//
-//    }
-//}
