@@ -5,34 +5,42 @@ Sorting even numbers from a file
 
 */
 
-public class Solution {
-    public static void main(String[] args) {
-        // напишите тут ваш код
-        BufferedReader conReader = new BufferedReader(new InputStreamReader (System.in));
-        ArrayList<Integer> vect = new ArrayList<>();
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        //write your code here
+        ArrayList<Integer> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        InputStream inputStream = null;
+        BufferedReader fileReader = null;
         try {
-            BufferedReader fileReader = new BufferedReader((new InputStreamReader(new FileInputStream(conReader.readLine()))));
+            String s = reader.readLine();
+            inputStream = new FileInputStream(s);
+            fileReader = new BufferedReader(new InputStreamReader(inputStream));
 
             while (fileReader.ready()) {
-                vect.add(Integer.parseInt(fileReader.readLine()));
+                String str = fileReader.readLine();
+                list.add(Integer.parseInt(str));
             }
-            fileReader.close();
-        }catch (FileNotFoundException e){
-            System.out.println("File Not Found!");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
         } catch (IOException e) {
-            System.out.println("Can't read File");
+            System.out.println("Can't read file");
+        } finally {
+            fileReader.close();
+            inputStream.close();
         }
 
-        Collections.sort (vect);
-
-        for (Integer i : vect) {
-            if (i % 2 == 0)
+        Collections.sort(list);
+        for (Integer i : list){
+            if(i % 2 == 0){
                 System.out.println(i);
+            }
         }
-
-
-
     }
 }
-© 2020 GitHub, Inc.
