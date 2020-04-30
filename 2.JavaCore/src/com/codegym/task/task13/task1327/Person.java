@@ -11,6 +11,7 @@ public class Person implements TurnipItem {
         System.out.println(name + " behind " + second.getName());
     }
 
+    @Override
     public String getName() {
         return name;
     }
