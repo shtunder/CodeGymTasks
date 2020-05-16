@@ -28,16 +28,16 @@ public class Solution {
         public abstract String getTitle();
 
         private String getOutputByBookType() {
-            String agathaChristieOutput = author + ", " + getBook().getTitle() + " is a detective";
-            String markTwainOutput = getBook().getTitle() + " book was written by " + author;
+            String agathaChristieOutput = author + ": " + getBook().getTitle() + " is a detective";
+            String markTwainOutput = getBook().getTitle() + " was written by " + author;
 
             String output = "output";
-            //Add your code here
-            if (getBook() instanceof AgathaChristieBook)
-                output = agathaChristieOutput;
-
-            if (getBook() instanceof MarkTwainBook)
+            if (getBook() instanceof MarkTwainBook) {
                 output = markTwainOutput;
+            }
+            if (getBook() instanceof AgathaChristieBook) {
+                output = agathaChristieOutput;
+            }
 
             return output;
         }
@@ -56,13 +56,13 @@ public class Solution {
         }
 
         @Override
-        public MarkTwainBook getBook() {
+        public Book getBook() {
             return this;
         }
 
         @Override
         public String getTitle() {
-            return this.title;
+            return title;
         }
     }
 
@@ -75,15 +75,13 @@ public class Solution {
         }
 
         @Override
-        public AgathaChristieBook getBook() {
+        public Book getBook() {
             return this;
         }
 
         @Override
         public String getTitle() {
-            return this.title;
+            return title;
         }
     }
-
-
 }
