@@ -34,14 +34,11 @@ public class Solution {
 
                 if (value >= 128 || value <= 0) {
                     print(value);
-                    continue;
                 }
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                print(s);
             }
-            print(s);
         }
-
     }
 
     public static void print(Double value) {
