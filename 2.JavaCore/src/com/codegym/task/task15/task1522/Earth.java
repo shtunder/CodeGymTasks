@@ -1,14 +1,14 @@
 package com.codegym.task.task15.task1522;
 
 public class Earth implements Planet {
-    private static Earth earth;
+    private static Earth instance;
 
     private Earth() {}
 
-    public static Earth getEarth() {
-        if (earth == null) {
-            earth = new Earth();
+    public static Earth getInstance() {
+        if (instance == null) {
+            instance = new Earth();
         }
-        return earth;
+        return instance;
     }
 }

@@ -11,7 +11,6 @@ Reinforce the singleton pattern
 
 public class Solution {
     public static void main(String[] args) {
-        readKeyFromConsoleAndInitPlanet();
         System.out.println(thePlanet);
     }
 
@@ -19,7 +18,7 @@ public class Solution {
 
     // Add static block here
     static {
-
+        readKeyFromConsoleAndInitPlanet();
     }
 
     public static void readKeyFromConsoleAndInitPlanet() {
@@ -28,11 +27,11 @@ public class Solution {
         try {
             String s = reader.readLine();
             if (s.equals(Planet.EARTH)) {
-                thePlanet = Earth.getEarth();
+                thePlanet = Earth.getInstance();
             } else if (s.equals(Planet.MOON)) {
-                thePlanet = Moon.getMoon();
+                thePlanet = Moon.getInstance();
             } else if (s.equals(Planet.SUN)) {
-                thePlanet = Sun.getSun();
+                thePlanet = Sun.getInstance();
             }
         } catch (IOException e) {
             e.printStackTrace();
