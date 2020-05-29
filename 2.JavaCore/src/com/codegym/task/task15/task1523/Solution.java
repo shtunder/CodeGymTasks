@@ -7,21 +7,23 @@ Overloading constructors
 
 public class Solution {
 
-    public Solution () {
+    public Solution(byte a) {
 
     }
 
-    Solution (int i) {
+    protected Solution(short a) {
 
     }
 
-    protected Solution (double d) {
+    Solution(int a) {
 
     }
 
-    private Solution (String s) {
+    private Solution(long a) {
 
     }
+
+
 
     public static void main(String[] args) {
 

@@ -1,14 +1,15 @@
 package com.codegym.task.task15.task1523;
 
 public class SubSolution extends Solution {
-    public SubSolution() {
+    public SubSolution(byte a) {
+        super(a);
     }
 
-    protected SubSolution(int i) {
-        super(i);
+    protected SubSolution(short a) {
+        super(a);
     }
 
-    SubSolution(double d) {
-        super(d);
+    SubSolution(int a) {
+        super(a);
     }
 }
