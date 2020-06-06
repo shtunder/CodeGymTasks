@@ -18,9 +18,9 @@ public class Solution {
         }
     }
 
-    //add your code below - добавь код ниже
+    // Add your code below
     public static class Euro extends Money {
-        public double amount = 123d;
+        private double amount = 123d;
 
         public Euro getMoney() {
             return this;
@@ -29,6 +29,6 @@ public class Solution {
         public Double getAmount() {
             return amount;
         }
+
     }
 }
-
