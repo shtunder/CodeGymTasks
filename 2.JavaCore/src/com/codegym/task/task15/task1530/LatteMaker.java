@@ -3,19 +3,16 @@ package com.codegym.task.task15.task1530;
 public class LatteMaker extends DrinkMaker {
     @Override
     public void getRightCup() {
-        System.out.println("Берем чашку для латте");
-
+        System.out.println("Grab a cup for latte");
     }
 
     @Override
-    public void putIngredient() {
-        System.out.println("Делаем кофе");
-
+    public void addIngredients() {
+        System.out.println("Make coffee");
     }
 
     @Override
     public void pour() {
-        System.out.println("Заливаем молоком с пенкой");
-
+        System.out.println("Fill with foamy milk");
     }
 }

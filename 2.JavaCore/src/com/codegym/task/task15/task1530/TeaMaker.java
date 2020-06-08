@@ -3,19 +3,16 @@ package com.codegym.task.task15.task1530;
 public class TeaMaker extends DrinkMaker {
     @Override
     public void getRightCup() {
-        System.out.println("Берем чашку для чая");
-
+        System.out.println("Grab a cup for tea");
     }
 
     @Override
-    public void putIngredient() {
-        System.out.println("Насыпаем чай");
-
+    public void addIngredients() {
+        System.out.println("Add tea leaves");
     }
 
     @Override
     public void pour() {
-        System.out.println("Заливаем кипятком");
-
+        System.out.println("Fill with boiling water");
     }
 }
