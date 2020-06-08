@@ -27,7 +27,7 @@ public class Solution {
     public int i = 6;
 
     public String name = "First name";
-    
+
     public Solution() {
         System.out.println("Solution constructor");
         printAllFields(this);
