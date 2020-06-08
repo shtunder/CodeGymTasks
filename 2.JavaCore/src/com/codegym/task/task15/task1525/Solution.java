@@ -20,7 +20,6 @@ public class Solution {
                 String s = fReader.readLine();
                 lines.add(s);
             }
-
         } catch (FileNotFoundException e) {
             System.out.println("Error: File " + Statics.FILE_NAME + " not found!" );
         } catch (IOException e) {
