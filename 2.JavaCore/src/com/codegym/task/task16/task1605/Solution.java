@@ -37,22 +37,21 @@ public class Solution {
         }
 
         public Date startPlaying() {
-            System.out.println(this.owner + " starts playing");
+            System.out.println(this.owner + " is starting to play");
             return new Date();
         }
 
         public Date stopPlaying() {
-            System.out.println(this.owner + " stops playing");
+            System.out.println(this.owner + " is stopping playing");
             return new Date();
         }
 
         @Override
         public void run() {
-            Date start = startPlaying();
+            Date a = startPlaying();
             sleepNSeconds(1);
-            Date finish = stopPlaying();
-
-            System.out.println("Playing " + (finish.getTime() - start.getTime()) + " ms");
+            Date b = stopPlaying();
+            System.out.println("Played for " + (b.getTime() - a.getTime()) + " ms");
         }
     }
 }

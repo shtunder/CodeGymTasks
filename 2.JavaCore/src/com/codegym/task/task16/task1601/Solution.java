@@ -12,9 +12,10 @@ public class Solution {
     }
 
     public static class TestThread implements Runnable {
-        public void run (){
+        @Override
+        public void run() {
             System.out.println("My first thread");
         }
-
     }
 }
+

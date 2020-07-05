@@ -18,11 +18,11 @@ public class Solution {
     }
 
     public static class SpecialThread implements Runnable {
+        @Override
         public void run() {
             for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
                 System.out.println(element);
             }
-
         }
     }
 }
