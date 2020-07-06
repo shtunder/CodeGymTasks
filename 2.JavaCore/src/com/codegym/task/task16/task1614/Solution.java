@@ -9,11 +9,11 @@ Countdown
 */
 
 public class Solution {
-    public static volatile List<String> list = new ArrayList<String>(5);
+    public static volatile List<String> list = new ArrayList<>(5);
 
     static {
         for (int i = 0; i < 5; i++) {
-            list.add("Строка " + i);
+            list.add("Line " + i);
         }
     }
 
@@ -39,8 +39,8 @@ public class Solution {
         }
 
         public void printCountdown() throws InterruptedException {
-            //add your code here - добавь код тут
-            countFrom -=1;
+            //write your code here
+            countFrom -= 1;
             System.out.println(list.get(countFrom));
             Thread.sleep(500);
         }
