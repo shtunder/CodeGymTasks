@@ -9,7 +9,7 @@ public class Solution {
     public static volatile boolean isStopped = false;
 
     public static void main(String[] args) throws InterruptedException {
-        Clock clock = new Clock("Лондон", 23, 59, 57);
+        Clock clock = new Clock("London", 23, 59, 57);
         Thread.sleep(4000);
         isStopped = true;
         Thread.sleep(1000);
@@ -39,27 +39,26 @@ public class Solution {
         }
 
         private void printTime() throws InterruptedException {
-            //add your code here - добавь код тут
-            if (hours == 0 && minutes == 0 && seconds == 0) {
-                System.out.println(String.format("В г. %s сейчас полночь!", cityName));
-            } else {
-                System.out.println(String.format("В г. %s сейчас %d:%d:%d!", cityName, hours, minutes, seconds));
-            }
-
-            seconds += 1;
-            if (seconds > 59) {
+            //write your code here
+            seconds++;
+            Thread.sleep(1000);
+            if (seconds % 60 == 0) {
                 seconds = 0;
-                minutes += 1;
+                minutes++;
             }
-            if (minutes > 59) {
+            if (minutes == 60) {
                 minutes = 0;
-                hours += 1;
+                hours++;
             }
-            if (hours > 23) {
+            if (hours == 24) {
                 hours = 0;
             }
 
-            Thread.sleep(1000);
+            if (hours == 0 && minutes == 0 && seconds == 0) {
+                System.out.println(String.format("It's currently midnight in %s!", cityName));
+            } else {
+                System.out.println(String.format("In %s, the time is now %02d:%02d:%02d!", cityName, hours, minutes, seconds));
+            }
         }
     }
 }

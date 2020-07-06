@@ -7,15 +7,14 @@ Arranging calls to join()
 
 public class Solution {
     public static void main(String[] args) throws InterruptedException {
-        Cat cat1 = new Cat("Мурка");
-        Cat cat2 = new Cat("Пушинка");
+        Cat cat1 = new Cat("Missy");
+        Cat cat2 = new Cat("Coco");
     }
 
     private static void investigateWorld() {
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
@@ -25,24 +24,23 @@ public class Solution {
 
         public Cat(String name) {
             super(name);
-            kitten1 = new Kitten("Котенок 1, мама - " + getName());
-            kitten2 = new Kitten("Котенок 2, мама - " + getName());
+            kitten1 = new Kitten("Kitten 1 (mother - " + getName() + ")");
+            kitten2 = new Kitten("Kitten 2 (mother - " + getName() + ")");
             start();
-
         }
 
         public void run() {
-            System.out.println(getName() + " родила 2 котенка");
+            System.out.println(getName() + " gave birth to 2 kittens");
             try {
-                initAllKitten();
+                initAllKittens();
                 kitten1.join();
                 kitten2.join();
             } catch (InterruptedException e) {
             }
-            System.out.println(getName() + ": Все котята в корзинке. " + getName() + " собрала их назад");
+            System.out.println(getName() + ": All the kittens are in the basket. " + getName() + " brought them back");
         }
 
-        private void initAllKitten() throws InterruptedException {
+        private void initAllKittens() throws InterruptedException {
             kitten1.start();
             kitten2.start();
         }
@@ -54,7 +52,7 @@ public class Solution {
         }
 
         public void run() {
-            System.out.println(getName() + ", вылез из корзинки");
+            System.out.println(getName() + " got out of the basket");
             investigateWorld();
         }
     }

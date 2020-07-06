@@ -12,7 +12,7 @@ public class Solution {
         Clock clock = new Clock();
         Thread.sleep(2000);
         isStopped = true;
-        System.out.println("Clock has to be stopped");
+        System.out.println("the clock has to be stopped");
         Thread.sleep(2000);
         System.out.println("Double-check");
     }
@@ -26,18 +26,18 @@ public class Solution {
         public void run() {
             try {
                 while (!isStopped) {
-                    printTikTak();
+                    printTickTock();
                 }
             } catch (InterruptedException e) {
             }
         }
 
-        private void printTikTak() throws InterruptedException {
-            //add your code here - добавь код тут
+        private void printTickTock() throws InterruptedException {
+            //write your code here
+            System.out.println("Tick");
             Thread.sleep(500);
-            System.out.println("Tik");
+            System.out.println("Tock");
             Thread.sleep(500);
-            System.out.println("Tak");
         }
     }
 }
