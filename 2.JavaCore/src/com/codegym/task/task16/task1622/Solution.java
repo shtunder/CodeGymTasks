@@ -1,6 +1,6 @@
 package com.codegym.task.task16.task1622;
 
-/*
+/* 
 Consecutive threads
 
 */
@@ -10,15 +10,15 @@ public class Solution {
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < COUNT; i++) {
-            new SleepingThread().join();
-
-            //напишите тут ваш код
+            SleepingThread sleepingThread = new SleepingThread();
+            //write your code here
+            sleepingThread.join();
         }
     }
 
     public static class SleepingThread extends Thread {
         private static volatile int threadCount = 0;
-        private volatile int countDownIndex = COUNT;
+        private volatile int countdownIndex = COUNT;
 
         public SleepingThread() {
             super(String.valueOf(++threadCount));
@@ -28,18 +28,18 @@ public class Solution {
         public void run() {
             while (true) {
                 System.out.println(this);
-                if (--countDownIndex == 0) return;
-                //напишите тут ваш код
+                if (--countdownIndex == 0) return;
+                //write your code here
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
-                    System.out.println("Нить прервана");
+                    System.out.println("Thread interrupted");
                 }
             }
         }
 
         public String toString() {
-            return "#" + getName() + ": " + countDownIndex;
+            return "#" + getName() + ": " + countdownIndex;
         }
     }
 }
