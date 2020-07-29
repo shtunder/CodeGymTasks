@@ -12,18 +12,18 @@ public class Solution {
     public static class OnlineGame extends Thread {
         public static volatile boolean isWinnerFound = false;
 
-        public static List<String> steps = new ArrayList<String>();
+        public static List<String> actions = new ArrayList<>();
 
         static {
-            steps.add("Начало игры");
-            steps.add("Сбор ресурсов");
-            steps.add("Рост экономики");
-            steps.add("Убийство врагов");
+            actions.add("Start game");
+            actions.add("Gather resources");
+            actions.add("Grow economy");
+            actions.add("Kill enemies");
         }
 
-        protected Gamer gamer1 = new Gamer("Ivanov", 3);//3
-        protected Gamer gamer2 = new Gamer("Petrov", 1);//1
-        protected Gamer gamer3 = new Gamer("Sidorov", 5);//5
+        protected Gamer gamer1 = new Gamer("Smith", 3);
+        protected Gamer gamer2 = new Gamer("Jones", 1);
+        protected Gamer gamer3 = new Gamer("Gates", 5);
 
         public void run() {
             gamer1.start();
@@ -48,20 +48,18 @@ public class Solution {
 
         @Override
         public void run() {
-            //Add your code here - добавь код тут
+            //write your code here
             try {
-                for (String action : OnlineGame.steps) {
-                    System.out.println(getName() + ":" + action);
+                for (String s : OnlineGame.actions) {
+                    System.out.println(getName() + " : " + s);
                     Thread.sleep(1000 / rating);
                 }
-
-                if (!OnlineGame.isWinnerFound)
-                    System.out.println(getName() + ":победитель!");
+                if (!OnlineGame.isWinnerFound) {
+                    System.out.println(getName() + " : won!");
+                }
                 OnlineGame.isWinnerFound = true;
-
             } catch (InterruptedException e) {
-                System.out.println(getName() + ":проиграл");
-                return;
+                System.out.println(getName() + " : lost");
             }
         }
     }
