@@ -16,7 +16,7 @@ public class Solution {
 
     public static class Note {
 
-        public static final List<String> notes = new ArrayList<String>();
+        public static final List<String> notes = new ArrayList<>();
 
         public static void addNote(String note) {
             notes.add(0, note);
@@ -25,9 +25,11 @@ public class Solution {
         public static void removeNote(String threadName) {
             String note = notes.remove(0);
             if (note == null) {
-                System.out.println("Другая нить удалила нашу заметку");
+                System.out.println("Another thread deleted our note");
             } else if (!note.startsWith(threadName)) {
-                System.out.println("Нить [" + threadName + "] удалила чужую заметку [" + note + "]");
+                System.out.println("Thread [" + threadName + "] deleted someone else's note [" + note + "]");
+            } else {
+                System.out.println("Thread [" + threadName + "] deleted its own note [" + note + "]");
             }
         }
     }
@@ -35,10 +37,13 @@ public class Solution {
     public static class NoteThread extends Thread {
         @Override
         public void run() {
-            for (int i=0; i<1000; i++) {
+            for (int i = 0; i < 1000; i++) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                }
                 Note.addNote(getName() + "-Note" + i);
                 Note.removeNote(getName());
-                //comments: You have black screen? For use Thread.sleep here.
             }
         }
     }
