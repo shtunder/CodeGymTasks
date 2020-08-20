@@ -1,8 +1,7 @@
 package com.codegym.task.task16.task1602;
 
-/* 
+/*
 My second thread
-
 */
 
 public class Solution {
