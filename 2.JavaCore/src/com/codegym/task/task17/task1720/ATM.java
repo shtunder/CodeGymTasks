@@ -22,7 +22,7 @@ public class ATM {
         @Override
         public void run() {
             while (!isStopped) {
-                account.deposit("1000");            //кладем на счет
+                account.deposit("1000");            // Make a deposit
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -32,16 +32,15 @@ public class ATM {
         }
     };
 
-
     public static class SpendThread extends Thread {
 
         @Override
         public void run() {
             while (!isStopped) {
                 try {
-                    account.withdraw("100");             //снимаем со счета
+                    account.withdraw("100");             // Make a withdrawal
                 } catch (NotEnoughMoneyException e) {
-                    System.out.println("Недостаточно денег");
+                    System.out.println("Insufficient money");
                 }
                 try {
                     Thread.sleep(100);
