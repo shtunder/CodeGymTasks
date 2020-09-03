@@ -3,7 +3,6 @@ package com.codegym.task.task17.task1721;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /* 
 Transactionality
@@ -11,15 +10,19 @@ Transactionality
 */
 
 public class Solution {
-    public static List<String> allLines = new ArrayList<String>();
-    public static List<String> forRemoveLines = new ArrayList<String>();
+    public static List<String> allLines = new ArrayList<>();
+    public static List<String> linesForRemoval = new ArrayList<>();
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String fileName1 = sc.nextLine();
-        String fileName2 = sc.nextLine();
-//        String fileName1 = "d:\\3.txt";
-//        String fileName2 = "d:\\4.txt";
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName1 = "";
+        String fileName2 = "";
+        try {
+            fileName1 = reader.readLine();
+            fileName2 = reader.readLine();
+        } catch (IOException e) {
+            System.out.println("Can't read file name");
+        }
 
         try {
             BufferedReader file1 = new BufferedReader(new InputStreamReader(new FileInputStream(fileName1)));
@@ -31,32 +34,27 @@ public class Solution {
         } catch (FileNotFoundException e) {
             System.out.println("File " + fileName1 + " not found");
         } catch (IOException e) {
-            System.out.println("Can't Read File " + fileName1);
+            System.out.println("Can't read file " + fileName1);
         }
 
         try {
             BufferedReader file2 = new BufferedReader(new InputStreamReader(new FileInputStream(fileName2)));
 
             while (file2.ready()) {
-                forRemoveLines.add(file2.readLine());
+                linesForRemoval.add(file2.readLine());
             }
 
         } catch (FileNotFoundException e) {
             System.out.println("File " + fileName2 + " not found");
         } catch (IOException e) {
-            System.out.println("Can't Read File " + fileName2);
-        }
-
-        try {
-            new Solution().joinData();
-        } catch (CorruptedDataException e) {
-            System.out.println("Что-то");
+            System.out.println("Can't read file " + fileName2);
         }
     }
 
+
     public void joinData() throws CorruptedDataException {
-        if (allLines.containsAll(forRemoveLines)) {
-            allLines.removeAll(forRemoveLines);
+        if (allLines.containsAll(linesForRemoval)) {
+            allLines.removeAll(linesForRemoval);
             return;
         } else {
             allLines.clear();
