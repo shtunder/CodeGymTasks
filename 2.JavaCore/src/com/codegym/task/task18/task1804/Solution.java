@@ -1,27 +1,15 @@
 package com.codegym.task.task18.task1804;
 
 import java.io.FileInputStream;
-
-/* 
-Rarest bytes
-
-*/
-
-package com.javarush.task.task18.task1804;
-
-import java.io.FileInputStream;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 /*
-Самые редкие байты
-Ввести с консоли имя файла.
-Найти байт или байты с минимальным количеством повторов.
-Вывести их на экран через пробел.
-Закрыть поток ввода-вывода.
+Rarest bytes
+
 */
+
 
 public class Solution {
     public static void main(String[] args) throws Exception {
