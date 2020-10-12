@@ -17,8 +17,8 @@ public class Solution {
     public static List<Person> allPeople = new ArrayList<Person>();
 
     static {
-        allPeople.add(Person.createMale("Ivanov Ivan", new Date()));  // id=0
-        allPeople.add(Person.createMale("Petrov Petr", new Date()));  // id=1
+        allPeople.add(Person.createMale("Ivanov Ivan", new Date())); // id=0
+        allPeople.add(Person.createMale("Petrov Petr", new Date())); // id=1
     }
 
     public static void main(String[] args) {
