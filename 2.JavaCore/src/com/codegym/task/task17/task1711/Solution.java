@@ -17,12 +17,12 @@ public class Solution {
     public static volatile List<Person> allPeople = new ArrayList<Person>();
 
     static {
-        allPeople.add(Person.createMale("Иванов Иван", new Date()));  //сегодня родился    id=0
-        allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
+        allPeople.add(Person.createMale("Ivanov Ivan", new Date()));  // id=0
+        allPeople.add(Person.createMale("Petrov Petr", new Date()));  // id=1
     }
 
     public static void main(String[] args) {
-        //start here - начни тут
+        //start here
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         DateFormat dateFormatPrt = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
@@ -38,10 +38,8 @@ public class Solution {
                         e.getMessage();
                     }
 
-                    //VALIDATOR: При запуске программы с параметром -с программа должна добавлять человека с заданными
-                    // параметрами в конец списка allPeople, и выводить id (index) на экран.
                     Person person;
-                    if (args[step + 1].startsWith("м"))
+                    if (args[step + 1].startsWith("m"))
                         person = Person.createMale(args[step], date);
                     else
                         person = Person.createFemale(args[step], date);
@@ -64,7 +62,7 @@ public class Solution {
                         //update name
                         person.setName(args[step + 1]);
 
-                        //udate date
+                        //update date
                         Date date = null;
                         try {
                             date = dateFormat.parse(args[step + 3]);
@@ -74,7 +72,7 @@ public class Solution {
                         person.setBirthDay(date);
 
                         //update sex
-                        if (args[step + 2].startsWith("м"))
+                        if (args[step + 2].startsWith("m"))
                             person.setSex(Sex.MALE);
                         else
                             person.setSex(Sex.FEMALE);
@@ -107,7 +105,7 @@ public class Solution {
                         StringBuffer s = new StringBuffer();
                         s.append(person.getName());
                         s.append(" ");
-                        s.append(person.getSex() == Sex.MALE ? "м" : "ж");
+                        s.append(person.getSex() == Sex.MALE ? "m" : "w");
                         s.append(" ");
                         s.append(dateFormatPrt.format(person.getBirthDay()));
                         System.out.println(s);
@@ -122,7 +120,7 @@ public class Solution {
             StringBuffer s = new StringBuffer();
             s.append(person.getName());
             s.append(" ");
-            s.append(person.getSex() == Sex.MALE ? "м" : "ж");
+            s.append(person.getSex() == Sex.MALE ? "m" : "w");
             s.append(" ");
             if (person.getBirthDay()!=null)
                 s.append(dateFormatPrt.format(person.getBirthDay()));
