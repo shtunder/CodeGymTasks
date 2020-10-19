@@ -7,6 +7,8 @@ Let's count
 
 public class Solution {
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("Main thread started...");
+
         Counter counter1 = new Counter();
         Counter counter2 = new Counter();
         Counter counter3 = new Counter();
@@ -18,9 +20,11 @@ public class Solution {
         counter4.start();
 
         counter1.join();
-        counter2.join();
-        counter3.join();
-        counter4.join();
+//        counter2.join();
+//        counter3.join();
+//        counter4.join();
+
+
 
         for (int i = 1; i <= 100; i++) {
             if (values[i] != 1) {
@@ -28,6 +32,8 @@ public class Solution {
                 break;
             }
         }
+
+        System.out.println("Main thread finished...");
     }
 
     public static Integer count = 0;
@@ -61,6 +67,15 @@ public class Solution {
                 } catch (InterruptedException ignored) {
                 }
             } while (getCount() < 100);
+
+            System.out.printf("%s started... \n", Thread.currentThread().getName());
+            try{
+                Thread.sleep(500);
+            }
+            catch(InterruptedException e){
+                System.out.println("Thread has been interrupted");
+            }
+            System.out.printf("%s finished... \n", Thread.currentThread().getName());
         }
     }
 }
