@@ -34,5 +34,6 @@ public class Cook implements Runnable {
         Thread.sleep(order.getTime());     // Prepare the dish
         Dish dish = new Dish(order.getTableNumber());       // This is a prepared dish
         System.out.println(String.format("The order for table %d is ready", dish.getTableNumber()));
+        manager.getDishQueue().add(dish);
     }
 }
