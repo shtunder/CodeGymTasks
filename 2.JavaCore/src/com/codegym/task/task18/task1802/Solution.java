@@ -23,7 +23,6 @@ public class Solution {
                 minByte = currByte;
         }
         System.out.println("Min byte = " + minByte);
-
         reader.close();
     }
 }
