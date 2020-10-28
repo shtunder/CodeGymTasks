@@ -1,7 +1,11 @@
 package com.codegym.task.task18.task1803;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.util.*;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /* 
 Most frequent bytes
@@ -10,58 +14,41 @@ Most frequent bytes
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        Scanner reader = new Scanner(System.in);
-        String filename = reader.nextLine();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = reader.readLine();
 
-        FileInputStream f = new FileInputStream(filename);
+        FileInputStream inputStream = new FileInputStream(fileName);
+        HashMap<Integer, Integer> byteCounters = new HashMap<>();
 
-        HashMap<Integer, Integer> mapOfByte = new HashMap<Integer, Integer>();
-
-        int value = 0;
-        Integer count = 0;
-        while (f.available() > 0) {
-            value = f.read();
-
-            count = mapOfByte.get(value);
-            if (count != null)
-                count++;
-            else
-                count = 0;
-
-            mapOfByte.put(value, count);
+        while (inputStream.available() > 0) {
+            int currByte = inputStream.read();
+            if (byteCounters.containsKey(currByte)) {
+                Integer counter = byteCounters.get(currByte);
+                counter++;
+                byteCounters.put(currByte, counter);
+            } else
+                byteCounters.put(currByte, 1);
         }
+        inputStream.close();
 
-        f.close();
-
-
-        /*
-        Из-за этой строчки:
-        int max = Collections.max(mapOfByte.values());
-        Валидатором не принимается, показывая странные ошибки:
-        - Для чтения из файла используй поток FileInputStream.
-        - В консоль через пробел должны выводиться все байты из файла с максимальным количеством повторов.
-        - Поток чтения из файла должен быть закрыт.
-        Хотя условия выполненны, используется FileInputStream, поток закрыт ранее, и данные через пробел...
-        Пришлось городить велосипед, по поиску max
-        */
-
-        //Находим максимальное число повторений
-        boolean first = true;
-        int max = 0;
-        for (int amountByte : mapOfByte.values()) {
-            if (first) {
-                max = amountByte;
-                first = false;
+        Integer maxValue = 0;
+        for (Map.Entry<Integer, Integer> entry : byteCounters.entrySet()) {
+            if (entry.getValue() > maxValue) {
+                maxValue = entry.getValue();
             }
-            if (max < amountByte)
-                max = amountByte;
         }
 
-        //Выводим
-        for (Map.Entry pair : mapOfByte.entrySet()) {
-            if (max == (int) pair.getValue())
-                System.out.print(" " + pair.getKey());
+        ArrayList<Integer> maxValues = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : byteCounters.entrySet()) {
+            if (entry.getValue().equals(maxValue))
+                maxValues.add(entry.getKey());
         }
 
+        System.out.print("Bytes ");
+        for (Integer item : maxValues) {
+            System.out.print(item + " ");
+        }
+
+        System.out.println("with the maximum number of repetitions = " + maxValue);
     }
 }
