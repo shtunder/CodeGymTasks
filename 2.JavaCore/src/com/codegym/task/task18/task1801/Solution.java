@@ -20,12 +20,11 @@ public class Solution {
         while (fileInputStream.available() > 0) {
             int currByte = fileInputStream.read();
             if (maxByte < currByte) {
-                    maxByte = currByte;
+                maxByte = currByte;
             }
         }
         System.out.println("Max byte = " + maxByte);
         bufferedReader.close();
         fileInputStream.close();
-
     }
 }
