@@ -1,63 +1,43 @@
 package com.codegym.task.task18.task1804;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
-/*
+/* 
 Rarest bytes
 
 */
 
-
 public class Solution {
     public static void main(String[] args) throws Exception {
-        Scanner reader = new Scanner(System.in);
-        String filename = reader.nextLine();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        FileInputStream f = new FileInputStream(filename);
+        String fileName = reader.readLine();
 
-        HashMap<Integer, Integer> mapOfByte = new HashMap<Integer, Integer>();
+        FileInputStream fileInputStream = new FileInputStream(fileName);
 
-        int value = 0;
-        Integer count = 0;
-        while (f.available() > 0) {
-            value = f.read();
+        int[] arrayCounts = new int[256];
 
-            count = mapOfByte.get(value);
-            if (count != null)
-                count++;
-            else
-                count = 0;
-
-            mapOfByte.put(value, count);
+        while (fileInputStream.available() > 0) {
+            int currByte = fileInputStream.read();
+            arrayCounts[currByte]++;
         }
 
-        f.close();
-
-
-        //int min = Collections.min(mapOfByte.values());
-
-
-        //Находим минимальное число повторений
-        boolean first = true;
-        int min = 0;
-        for (int amountByte : mapOfByte.values()) {
-            if (first) {
-                min = amountByte;
-                first = false;
+        int min = arrayCounts[0];
+        for (int i = 1; i < arrayCounts.length; i++) {
+            if (arrayCounts[i] < min) {
+                min = arrayCounts[i];
             }
-            if (min > amountByte)
-                min = amountByte;
         }
 
-
-        //Выводим
-        for (Map.Entry pair : mapOfByte.entrySet()) {
-            if (min == (int) pair.getValue())
-                System.out.print(" " + pair.getKey());
+        for (int i = 0; i < arrayCounts.length; i++) {
+            if (arrayCounts[i] == min) {
+                System.out.print(i + " ");
+            }
         }
 
+        fileInputStream.close();
     }
 }
