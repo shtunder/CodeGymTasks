@@ -25,16 +25,16 @@ public class Solution {
             arrayCounts[currByte]++;
         }
 
-        int min = arrayCounts[0];
+        int min = 256;
         for (int i = 1; i < arrayCounts.length; i++) {
-            if (arrayCounts[i] < min) {
+            if (arrayCounts[i] != 0 && arrayCounts[i] < min) {
                 min = arrayCounts[i];
             }
         }
 
         for (int i = 0; i < arrayCounts.length; i++) {
             if (arrayCounts[i] == min) {
-                System.out.print(i + " ");
+                System.out.print((char) i + " ");
             }
         }
 
