@@ -1,8 +1,7 @@
 package com.codegym.task.task18.task1805;
 
-import java.io.FileInputStream;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.io.*;
+import java.util.ArrayList;
 
 /* 
 Sorting bytes
@@ -11,21 +10,33 @@ Sorting bytes
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        Scanner reader = new Scanner(System.in);
-        String filename = reader.nextLine();
+       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        FileInputStream f = new FileInputStream(filename);
-        TreeSet<Integer> setSortBytes = new TreeSet<>();
+       String fileName = reader.readLine();
 
-        //read from file
-        while (f.available() > 0) {
-            setSortBytes.add(f.read());
-        }
+       FileInputStream inputStream = new FileInputStream(fileName);
 
-        f.close();
+        ArrayList<Integer> arrayList = new ArrayList<>();
 
-        //Выводим
-        for (int value : setSortBytes)
-            System.out.print(value + " ");
+       while (inputStream.available() > 0) {
+           int currByte = inputStream.read();
+           arrayList.add(currByte);
+       }
+
+       for (int i = 0; i < arrayList.size() - 1; i++) {
+           for (int j = i + 1; j < arrayList.size(); j++) {
+               if (arrayList.get(i) > arrayList.get(j)) {
+                   int temp = (int) arrayList.get(i);
+                   arrayList.remove(i);
+                   arrayList.add(i, arrayList.get(j));
+                   arrayList.remove(j);
+                   arrayList.add(j, temp);
+               }
+           }
+       }
+
+       for (int i = 0; i < arrayList.size(); i++){
+           System.out.print(arrayList.get(i) + " ");
+       }
     }
 }
