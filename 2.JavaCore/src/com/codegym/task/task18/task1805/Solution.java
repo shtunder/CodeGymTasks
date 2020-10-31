@@ -10,33 +10,36 @@ Sorting bytes
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-       String fileName = reader.readLine();
+        String fileName = reader.readLine();
 
-       FileInputStream inputStream = new FileInputStream(fileName);
+        FileInputStream inputStream = new FileInputStream(fileName);
 
         ArrayList<Integer> arrayList = new ArrayList<>();
 
-       while (inputStream.available() > 0) {
-           int currByte = inputStream.read();
-           arrayList.add(currByte);
-       }
+        while (inputStream.available() > 0) {
+            int currByte = inputStream.read();
+            arrayList.add(currByte);
+        }
 
-       for (int i = 0; i < arrayList.size() - 1; i++) {
-           for (int j = i + 1; j < arrayList.size(); j++) {
-               if (arrayList.get(i) > arrayList.get(j)) {
-                   int temp = (int) arrayList.get(i);
-                   arrayList.remove(i);
-                   arrayList.add(i, arrayList.get(j));
-                   arrayList.remove(j);
-                   arrayList.add(j, temp);
-               }
-           }
-       }
+        for (int i = arrayList.size() - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arrayList.get(j) > arrayList.get(j + 1)) {
+                    int temp = arrayList.get(j);
+                    arrayList.set(j, arrayList.get(j + 1));
+                    arrayList.set(j + 1, temp);
+                }
+            }
+        }
 
-       for (int i = 0; i < arrayList.size(); i++){
-           System.out.print(arrayList.get(i) + " ");
-       }
+        int temp = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i) == temp) {
+                continue;
+            }
+            System.out.print(arrayList.get(i) + " ");
+            temp = arrayList.get(i);
+        }
     }
 }
