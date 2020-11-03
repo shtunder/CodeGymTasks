@@ -33,12 +33,10 @@ public class Solution {
             if (inputStream.available() > 0) {
                 buffer = new byte[inputStream.available()];
                 int count = inputStream.read(buffer);
+                for (int i = 0; i < buffer.length; i++) {
+                    if (buffer[i] == 44) commaCount++;
+                }
             }
-
-            for (int i = 0; i < buffer.length; i++) {
-                if (buffer[i] == 44) commaCount++;
-            }
-
             System.out.println(commaCount);
         } catch (IOException e) {
             e.printStackTrace();
