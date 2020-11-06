@@ -1,41 +1,65 @@
 package com.codegym.task.task18.task1808;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Scanner;
-
 /* 
 Splitting a file
 
 */
 
+import java.io.*;
+import java.util.Scanner;
+
 public class Solution {
     public static void main(String[] args) throws IOException {
+//        Scanner fileName1 = new Scanner(System.in);
+//        Scanner fileName2 = new Scanner(System.in);
+//        Scanner fileName3 = new Scanner(System.in);
+//
+//        FileInputStream inputStream1 = new FileInputStream(fileName1.nextLine());
+//        FileOutputStream outputStream2 = new FileOutputStream(fileName2.nextLine());
+//        FileOutputStream outputStream3 = new FileOutputStream(fileName3.nextLine());
+//
+//        if (inputStream1.available() > 0) {
+//            byte[] buffer = new byte[inputStream1.available()];
+//            int count = inputStream1.read(buffer);
+//            int size;
+//            if (count % 2 == 0) {
+//                size = count / 2;
+//            } else {
+//                size = count / 2 + 1;
+//            }
+//            byte[] byteArray2 = new byte[size];
+//            for (int i = 0; i < size; i++) {
+//                byteArray2[i] = buffer[i];
+//            }
+//            byte[] byteArray3 = new byte[buffer.length - size];
+//            for (int i = size; i < buffer.length; i++) {
+//                byteArray3[i-size] = buffer[i];
+//            }
+//            outputStream2.write(byteArray2);
+//            outputStream3.write(byteArray3);
+//        }
+//        inputStream1.close();
+//        outputStream2.close();
+//        outputStream3.close();
 
-        Scanner scan = new Scanner(System.in);
-        String fileName1 = scan.nextLine();
-        String fileName2 = scan.nextLine();
-        String fileName3 = scan.nextLine();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String inputFile = reader.readLine();
+        String outputFile1 = reader.readLine();
+        String outputFile2 = reader.readLine();
 
-        FileInputStream f1 = new FileInputStream(fileName1);
-        FileOutputStream f2 = new FileOutputStream(fileName2);
-        FileOutputStream f3 = new FileOutputStream(fileName3);
+        try (FileInputStream fileInputStream = new FileInputStream(inputFile);
+             FileOutputStream fileOutputStream1 = new FileOutputStream(outputFile1);
+             FileOutputStream fileOutputStream2 = new FileOutputStream(outputFile2)) {
 
-        int fileSize = f1.available();
-        int part1Size = fileSize % 2 == 0 ? fileSize / 2 : fileSize / 2 + 1;
-
-        while (f1.available() > 0) {
-            byte[] buf1 = new byte [part1Size];
-            byte[] buf2 = new byte [fileSize - part1Size];
-
-            f1.read(buf1);
-            f1.read(buf2);
-            f2.write(buf1);
-            f3.write(buf2);
+            int halfOfFile = (fileInputStream.available() + 1) / 2;
+            int numberOfByte = 0;
+            while (fileInputStream.available() > 0) {
+                if (numberOfByte < halfOfFile) {
+                    fileOutputStream1.write(fileInputStream.read());
+                    numberOfByte++;
+                }
+                else fileOutputStream2.write(fileInputStream.read());
+            }
         }
-        f1.close ();
-        f2.close ();
-        f3.close ();
     }
 }
