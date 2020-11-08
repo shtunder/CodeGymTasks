@@ -1,32 +1,30 @@
 package com.codegym.task.task18.task1809;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-/*
+/* 
 Reversing a file
 
 */
 
+import java.io.*;
+
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inputFile = reader.readLine();
-        String outputFile = reader.readLine();
 
-        try (FileInputStream fileInputStream = new FileInputStream(inputFile);
-             FileOutputStream fileOutputStream = new FileOutputStream(outputFile)) {
+        String fileName1 = reader.readLine();
+        String fileName2 = reader.readLine();
 
-            List<Integer> inputBytes = new ArrayList<>();
-            while (fileInputStream.available() > 0) {
-                inputBytes.add(fileInputStream.read());
-            }
-            Collections.reverse(inputBytes);
-            for (Integer aByte : inputBytes) {
-                fileOutputStream.write(aByte);
+        FileInputStream fileInputStream = new FileInputStream(fileName1);
+        FileOutputStream fileOutputStream = new FileOutputStream(fileName2);
+
+        if (fileInputStream.available() > 0) {
+            byte[] buffer = new byte[fileInputStream.available()];
+            int count = fileInputStream.read(buffer);
+            for (int i = buffer.length - 1; i >= 0; i--){
+                fileOutputStream.write(buffer[i]);
             }
         }
+        fileInputStream.close();
+        fileOutputStream.close();
     }
 }
