@@ -18,20 +18,6 @@ public class Solution {
         }
     }
 
-    public static class DecoratorRunnableImpl implements Runnable {
-        private Runnable component;
-
-        public DecoratorRunnableImpl(Runnable component) {
-            this.component = component;
-        }
-
-        @Override
-        public void run() {
-            System.out.print("DecoratorRunnableImpl body ");
-            component.run();
-        }
-    }
-
     public static class DecoratorMyRunnableImpl implements Runnable {
         private Runnable component;
 
@@ -42,6 +28,20 @@ public class Solution {
         @Override
         public void run() {
             System.out.print("DecoratorMyRunnableImpl body ");
+            component.run();
+        }
+    }
+
+    public static class DecoratorRunnableImpl implements Runnable {
+        private Runnable component;
+
+        public DecoratorRunnableImpl(Runnable component) {
+            this.component = component;
+        }
+
+        @Override
+        public void run() {
+            System.out.print("DecoratorRunnableImpl body ");
             component.run();
         }
     }
