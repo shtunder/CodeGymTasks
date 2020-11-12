@@ -8,17 +8,16 @@ Extending AmigoOutputStream
 */
 
 public class QuestionFileOutputStream implements AmigoOutputStream {
-
     private AmigoOutputStream amigoOutputStream;
-    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public QuestionFileOutputStream(AmigoOutputStream outputStream) {
-        this.amigoOutputStream = outputStream;
+    public QuestionFileOutputStream(AmigoOutputStream amigoOutputStream) throws IOException {
+        this.amigoOutputStream = amigoOutputStream;
     }
 
     @Override
     public void flush() throws IOException {
-        amigoOutputStream.flush();
+        amigoOutputStream.close();
     }
 
     @Override
@@ -39,7 +38,8 @@ public class QuestionFileOutputStream implements AmigoOutputStream {
     @Override
     public void close() throws IOException {
         System.out.println("Do you really want to close the stream? Y/N");
-        if (bufferedReader.readLine().equals("Y")) amigoOutputStream.close();
+        String s = reader.readLine();
+        if (s.equals("Y")) amigoOutputStream.close();
     }
 }
 
