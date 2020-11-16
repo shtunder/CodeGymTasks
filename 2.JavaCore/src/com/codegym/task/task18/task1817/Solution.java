@@ -1,29 +1,27 @@
 package com.codegym.task.task18.task1817;
 
+import java.io.FileReader;
+import java.io.IOException;
+
 /* 
 Spaces
 
 */
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
 public class Solution {
     public static void main(String[] args) throws IOException {
-
-        try (FileInputStream fileInputStream = new FileInputStream(args[0])) {
-            if (fileInputStream.available() > 0) {
-                byte[] buffer = new byte[fileInputStream.available()];
-                int countAll = fileInputStream.read(buffer);
-                int countSpaces = 0;
-                for (int i = 0; i < buffer.length; i++) {
-                    if (buffer[i] == 32) {
-                        countSpaces++;
-                    }
-                }
-                countSpaces / cou
+        int total = 0;
+        int spaces = 0;
+        try (FileReader fileReader = new FileReader(args[0])) {
+            while (fileReader.ready()) {
+                int readChar = fileReader.read();
+                total++;
+                if (readChar == (int) ' ') spaces++;
             }
-
+        }
+        if (total != 0) {
+            double result = (double) spaces / total * 100;
+            System.out.printf("%.2f", result);
         }
     }
 }
