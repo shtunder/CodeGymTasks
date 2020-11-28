@@ -21,15 +21,18 @@ public class Solution {
         while (!(readString = reader.readLine()).equals("exit")) {
             new ReadThread(readString).start();
         }
+
     }
 
     public static class ReadThread extends Thread {
         private String fileName;
 
         public ReadThread(String fileName) {
+            // Implement constructor body
             this.fileName = fileName;
         }
 
+        // Implement file reading here
         @Override
         public void run() {
             byte[] bytesCount = new byte[256];
