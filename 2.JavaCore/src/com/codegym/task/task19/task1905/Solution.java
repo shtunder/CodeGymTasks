@@ -47,17 +47,19 @@ public class Solution {
 
         @Override
         public String getContactFirstName() {
-            return null;
+            String[] fullName = contact.getName().split(", ");
+            return fullName[1];
         }
 
         @Override
         public String getContactLastName() {
-            return null;
+            String[] fullName = contact.getName().split(", ");
+            return fullName[0];
         }
 
         @Override
         public String getDialString() {
-            return null;
+            return "callto://+" + contact.getPhoneNumber().replaceAll("\\D", "");
         }
     }
 
