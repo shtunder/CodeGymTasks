@@ -11,12 +11,53 @@ Reinforce the adapter
 public class Solution {
     public static Map<String, String> countries = new HashMap<>();
 
+    static {
+        countries.put("UA", "Ukraine");
+        countries.put("US", "United States");
+        countries.put("FR", "France");
+    }
+
     public static void main(String[] args) {
 
     }
 
-    public static class DataAdapter {
+    public static class DataAdapter implements RowItem {
+        private Customer customer;
+        private Contact contact;
+
         public DataAdapter(Customer customer, Contact contact) {
+            this.customer = customer;
+            this.contact = contact;
+        }
+
+        @Override
+        public String getCountryCode() {
+            for (Map.Entry<String, String> entry : countries.entrySet()) {
+                if (entry.getValue().equals(customer.getCountryName())) {
+                    return entry.getKey();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public String getCompany() {
+            return customer.getCompanyName();
+        }
+
+        @Override
+        public String getContactFirstName() {
+            return null;
+        }
+
+        @Override
+        public String getContactLastName() {
+            return null;
+        }
+
+        @Override
+        public String getDialString() {
+            return null;
         }
     }
 
