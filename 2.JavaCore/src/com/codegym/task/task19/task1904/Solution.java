@@ -20,7 +20,6 @@ public class Solution {
         private final Scanner fileScanner;
 
         public PersonScannerAdapter(Scanner fileScanner) {
-
             this.fileScanner = fileScanner;
         }
 
