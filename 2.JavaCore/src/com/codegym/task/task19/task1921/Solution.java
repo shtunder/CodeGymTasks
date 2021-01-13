@@ -24,5 +24,21 @@ public class Solution {
 
         } catch (IOException ignored) {
         }
+
+        for (String fileLine : fileContent) {
+            String[] stringArray = fileLine.split(" ");
+            StringBuilder name = new StringBuilder();
+
+            for (int i = 0; i < stringArray.length - 3; i++) {
+                name.append(stringArray[i]).append(" ");
+            }
+
+            int year = Integer.parseInt(stringArray[stringArray.length - 1]);
+            int day = Integer.parseInt(stringArray[stringArray.length - 2]);
+            int month = Integer.parseInt(stringArray[stringArray.length - 3]) - 1; // January == 0.
+            Calendar birthDay = new GregorianCalendar(year, month, day);
+
+            PEOPLE.add(new Person(name.toString().trim(), birthDay.getTime()));
+        }
     }
 }
