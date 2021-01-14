@@ -30,7 +30,7 @@ public class Solution {
             StringBuilder name = new StringBuilder();
 
             for (int i = 0; i < stringArray.length - 3; i++) {
-                    name.append(stringArray[i]).append(" ");
+                name.append(stringArray[i]).append(" ");
             }
 
             int year = Integer.parseInt(stringArray[stringArray.length - 1]);
