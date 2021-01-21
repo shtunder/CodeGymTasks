@@ -33,6 +33,12 @@ public class Solution {
     }
 
     public static void main(String[] args) {
+        String fileName = null;
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            fileName = reader.readLine();
+        } catch (IOException ignored) {
+        }
 
     }
 }
