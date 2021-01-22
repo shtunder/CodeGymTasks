@@ -40,5 +40,35 @@ public class Solution {
         } catch (IOException ignored) {
         }
 
+        String fileLine;
+        ArrayList<String> fileContent = new ArrayList<>();
+
+        try (BufferedReader in = new BufferedReader(new FileReader(fileName))) {
+            while ((fileLine = in.readLine()) != null) {
+                fileContent.add(fileLine);
+            }
+        } catch (IOException ignored) {
+        }
+
+        for (String line : fileContent) {
+            String[] splitedLine = line.split(" ");
+            for (int i = 0; i < splitedLine.length; i++) {
+                for (Map.Entry<Integer, String> entry : map.entrySet()) {
+                    try {
+                        int number = Integer.parseInt(splitedLine[i]);
+                        if (entry.getKey().equals(number))
+                            splitedLine[i] = entry.getValue();
+                    } catch (NumberFormatException ignored) {
+                    }
+                }
+            }
+
+            StringBuilder sbLine = new StringBuilder();
+            for (String word : splitedLine) {
+                sbLine.append(word).append(" ");
+            }
+
+            System.out.println(sbLine.toString().trim());
+        }
     }
 }
