@@ -33,5 +33,15 @@ public class Solution {
             for (String word : splitedLine) {
                 if (word.length() > 6)
 
+                    sbLine.append(word).append(" ");
             }
         }
+
+        String resultLine = sbLine.toString().trim().replaceAll(" ", ",");
+        try (FileWriter fileWriter = new FileWriter(fileName2)) {
+            fileWriter.write(resultLine);
+        } catch (IOException ignore) {
+            /* NOP */
+        }
+    }
+}
