@@ -83,6 +83,15 @@ public class Solution {
 
         public void load(InputStream inputStream) throws Exception {
             // Implement this method
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            this.name = reader.readLine();
+            while (reader.ready()) {
+                String assetName = reader.readLine();
+                double assetPrice = Double.parseDouble(reader.readLine());
+                this.assets.add(new Asset(assetName, assetPrice));
+            }
+            reader.close();
         }
     }
 }
