@@ -67,6 +67,33 @@ public class Solution {
 
         public void load(InputStream inputStream) throws Exception {
             // Implement this method
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                User user = new User();
+                String[] lineArray = line.split("/");
+                if (lineArray.length < 5) {
+                    break;
+                }
+                user.setFirstName(lineArray[0]);
+                user.setLastName(lineArray[1]);
+                user.setBirthDate(new Date(Long.parseLong(lineArray[2])));
+                user.setMale(Boolean.parseBoolean(lineArray[3]));
+                switch (lineArray[4]) {
+                    case "UNITED_STATES":
+                        user.setCountry(User.Country.UNITED_STATES);
+                        break;
+                    case "UNITED_KINGDOM":
+                        user.setCountry(User.Country.UNITED_KINGDOM);
+                        break;
+                    default:
+                        user.setCountry(User.Country.OTHER);
+                        break;
+                }
+                this.users.add(user);
+            }
+
+            reader.close();
         }
 
         @Override
