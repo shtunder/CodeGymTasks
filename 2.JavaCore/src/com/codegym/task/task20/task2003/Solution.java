@@ -27,10 +27,27 @@ public class Solution {
 
     public void save(OutputStream outputStream) throws Exception {
         // Implement this method
+        Properties prop = new Properties();
+
+        for (Map.Entry<String, String> pair : properties.entrySet()) {
+            prop.setProperty(pair.getKey(), pair.getValue());
+        }
+
+        prop.store(outputStream, null);
+
+        outputStream.close();
+
     }
 
     public void load(InputStream inputStream) throws Exception {
         // Implement this method
+        Properties prop = new Properties();
+        prop.load(inputStream);
+        for (Map.Entry<Object, Object> pair : prop.entrySet()) {
+            properties.put(pair.getKey().toString(), pair.getValue().toString());
+        }
+
+        inputStream.close();
     }
 
     public static void main(String[] args) {
