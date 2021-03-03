@@ -1,8 +1,9 @@
 package com.codegym.task.task20.task2007;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
 
     private String firstName;
     private String lastName;
