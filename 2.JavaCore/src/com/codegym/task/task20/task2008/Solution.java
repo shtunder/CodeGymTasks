@@ -1,6 +1,6 @@
 package com.codegym.task.task20.task2008;
 
-import java.io.Serializable;
+import java.io.*;
 
 /* 
 How do you serialize Singleton?
@@ -54,6 +54,10 @@ public class Solution implements Serializable {
         }
 
         private Singleton() {
+        }
+
+        private Object readResolve() throws ObjectStreamException {
+            return ourInstance;
         }
     }
 }
