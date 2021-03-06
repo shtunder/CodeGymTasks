@@ -64,8 +64,6 @@ public class FileConsoleWriter {
     }
 
     public static void main(String[] args) throws IOException {
-        FileConsoleWriter fw = new FileConsoleWriter("D:/ts.txt");
-        fw.write("Hello Andrey!");
     }
 
 }
