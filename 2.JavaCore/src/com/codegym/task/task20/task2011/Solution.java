@@ -2,7 +2,6 @@ package com.codegym.task.task20.task2011;
 
 /* 
 Externalizable for apartments
-
 */
 
 public class Solution {
