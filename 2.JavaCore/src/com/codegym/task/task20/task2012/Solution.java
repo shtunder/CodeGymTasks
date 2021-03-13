@@ -20,12 +20,12 @@ public class Solution {
      *
      * @author CodeGym
      */
-    public static class OutputToConsole implements Serializable {
+    public static class OutputToConsole implements Externalizable {
         private int counter;
 
         /**
          * @param out A stream for externalization
-         * @throws java.io.IOException
+         * @throws IOException
          */
         @Override
         public void writeExternal(ObjectOutput out) throws IOException {
@@ -34,7 +34,7 @@ public class Solution {
 
         /**
          * @param in A stream for de-externalization
-         * @throws java.io.IOException
+         * @throws IOException
          * @throws ClassNotFoundException
          */
         @Override
