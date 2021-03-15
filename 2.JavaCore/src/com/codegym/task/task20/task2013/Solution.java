@@ -12,7 +12,7 @@ Externalizable Person
 */
 
 public class Solution {
-    public static class Person {
+    public static class Person implements Externalizable {
         private String firstName;
         private String lastName;
         private int age;
@@ -40,22 +40,25 @@ public class Solution {
 
         @Override
         public void writeExternal(ObjectOutput out) throws IOException {
+            out.writeObject(firstName);
             out.writeObject(mother);
+            out.writeObject(lastName);
             out.writeObject(father);
-            out.writeChars(firstName);
-            out.writeChars(lastName);
-            out.writeInt(age);
+            out.writeObject(age);
             out.writeObject(children);
         }
 
         @Override
         public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-            firstName = in.readLine();
-            lastName = in.readLine();
-            father = (Person) in.readObject();
+            firstName = (String) in.readObject();
             mother = (Person) in.readObject();
-            age = in.readInt();
-            children = (List) in.readObject();
+            lastName = (String) in.readObject();
+            father = (Person) in.readObject();
+            age = (int) in.readObject();
+            children = (List<Person>) in.readObject();
+        }
+
+        public Person() {
         }
     }
 
