@@ -1,5 +1,6 @@
 package com.codegym.task.task20.task2014;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -8,7 +9,7 @@ Serializable Solution
 
 */
 
-public class Solution {
+public class Solution implements Serializable {
     public static void main(String[] args) {
         System.out.println(new Solution(4));
     }
