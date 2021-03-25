@@ -1,32 +1,13 @@
 package com.codegym.task.task20.task2018;
 
-import java.io.Serializable;
+import java.io.*;
 
 /* 
 Find the bugs
 
 */
 
-public class Solution {
-    public static class A {
-
-        protected String nameA = "A";
-
-        public A(String nameA) {
-            this.nameA += nameA;
-        }
-    }
-
-    public class B extends A implements Serializable {
-
-        private String nameB;
-
-        public B(String nameA, String nameB) {
-            super(nameA);
-            this.nameA += nameA;
-            this.nameB = nameB;
-        }
-    }
+public class Solution implements Serializable {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
@@ -43,5 +24,38 @@ public class Solution {
 
         B b1 = (B) ois.readObject();
         System.out.println("nameA: " + b1.nameA + ", nameB: " + b1.nameB);
+    }
+
+    public static class A {
+
+        protected String nameA = "A";
+
+        public A() {
+        }
+
+        public A(String nameA) {
+            this.nameA += nameA;
+        }
+    }
+
+    public class B extends A implements Serializable {
+
+        private String nameB;
+
+        public B(String nameA, String nameB) {
+            super(nameA);
+            this.nameA += nameA;
+            this.nameB = nameB;
+        }
+
+        private void writeObject(ObjectOutputStream out) throws IOException {
+            out.defaultWriteObject();
+            out.writeObject(nameA);
+        }
+
+        private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+            in.defaultReadObject();
+            nameA = (String) in.readObject();
+        }
     }
 }
