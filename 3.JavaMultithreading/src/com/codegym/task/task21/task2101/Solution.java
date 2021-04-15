@@ -23,5 +23,11 @@ public class Solution {
     }
 
     public static void print(byte[] bytes) {
+        String currentBinary;
+        for (byte aByte : bytes) {
+            currentBinary = Integer.toBinaryString(256 + (int) aByte);
+            System.out.print(currentBinary.substring(currentBinary.length() - 8) + " ");
+        }
+        System.out.println();
     }
 }
